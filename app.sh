@@ -1,4 +1,4 @@
-### WRODPRESS ###
+### WORDPRESS ###
 _build_wordpress() {
 local VERSION="4.3"
 local FOLDER="wordpress"
