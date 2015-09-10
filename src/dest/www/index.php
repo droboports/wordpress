@@ -252,7 +252,7 @@ if (strpos($out[0], "running") !== FALSE) {
           <p>Make sure that WordPress is running. Currently it seems to be <strong>stopped</strong>.</p><?php } ?>
           <p><strong>Error establishing a database connection</strong></p>
           <p>Make sure that the MySQL DroboApp is running.</p>
-          <p><strong>I cannot connect to Pydio on the Drobo from outside my home network.</strong></p>
+          <p><strong>I cannot connect to WordPress on the Drobo from outside my home network.</strong></p>
           <?php if ($publicip == "") { ?><p>Make sure that your internet connection is working. Currently it seems your Drobo cannot retrieve its public IP address.</p><?php } ?>
           <p>Make sure that your ports are correctly forwarded and <a href="<?php echo $portscansite; ?>" target="_new">reachable from the internet</a>. If not, please contact your ISP to unblock them.</p>
         </div>
