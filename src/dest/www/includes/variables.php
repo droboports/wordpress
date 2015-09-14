@@ -10,7 +10,7 @@ $applogs = array("/tmp/DroboApps/".$app."/log.txt",
                  "/tmp/DroboApps/".$app."/error.log");
 
 $appprotos = array("http");
-$appports = array("8010");
+$appports = array("8030");
 $droboip = $_SERVER['SERVER_ADDR'];
 $apppage = $appprotos[0]."://".$droboip.":".$appports[0]."/";
 if ($publicip != "") {
