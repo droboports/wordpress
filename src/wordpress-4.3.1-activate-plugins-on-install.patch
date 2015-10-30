@@ -1,0 +1,12 @@
+--- a/wp-admin/install.php	2015-10-29 18:23:01.800091209 -0700
++++ b/wp-admin/install.php	2015-10-29 18:25:21.398336221 -0700
+@@ -319,6 +319,9 @@
+ 		if ( $error === false ) {
+ 			$wpdb->show_errors();
+ 			$result = wp_install( $weblog_title, $user_name, $admin_email, $public, '', wp_slash( $admin_password ), $loaded_language );
++			require_once( dirname( dirname( __FILE__ ) ) . '/wp-admin/includes/plugin.php' );
++			activate_plugin( dirname( dirname( __FILE__ ) ) . '/wp-content/plugins/disable-canonical-redirects.php' );
++			activate_plugin( dirname( dirname( __FILE__ ) ) . '/wp-content/plugins/relative-url.php' );
+ ?>
+ 
+ <h1><?php _e( 'Success!' ); ?></h1>

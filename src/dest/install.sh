@@ -15,6 +15,12 @@ set -o errexit  # exit on uncaught error code
 set -o nounset  # exit on unset variable
 set -o xtrace   # enable script tracing
 
+# check firmware version
+if ! /usr/bin/DroboApps.sh sdk_version &> /dev/null; then
+  echo "Unsupported Drobo firmware, please upgrade to the latest version." > "${statusfile}"
+  echo "4" > "${errorfile}"
+fi
+
 # install apache 2+
 /usr/bin/DroboApps.sh install_version apache 2
 

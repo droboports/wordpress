@@ -1,13 +1,15 @@
 <?php 
 $app = "wordpress";
 $appname = "WordPress";
-$appversion = "4.3";
+$appversion = "4.3.1";
 $appsite = "https://wordpress.org/";
 $apphelp = "https://wordpress.org/support/";
 
 $applogs = array("/tmp/DroboApps/".$app."/log.txt",
                  "/tmp/DroboApps/".$app."/access.log",
-                 "/tmp/DroboApps/".$app."/error.log");
+                 "/tmp/DroboApps/".$app."/error.log",
+                 "/tmp/DroboApps/".$app."/install.log",
+                 "/tmp/DroboApps/".$app."/update.log");
 
 $appprotos = array("http");
 $appports = array("8030");

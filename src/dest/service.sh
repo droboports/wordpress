@@ -7,7 +7,7 @@
 
 framework_version="2.1"
 name="wordpress"
-version="4.3"
+version="4.3.1"
 description="WordPress is web software you can use to create a beautiful website or blog"
 depends="apache mysql"
 webui="WebUI"
@@ -22,13 +22,30 @@ logfile="${tmp_dir}/log.txt"
 statusfile="${tmp_dir}/status.txt"
 errorfile="${tmp_dir}/error.txt"
 
-# backwards compatibility
-if [ -z "${FRAMEWORK_VERSION:-}" ]; then
-  framework_version="2.0"
-  . "${prog_dir}/libexec/service.subr"
-fi
+# check firmware version
+_firmware_check() {
+  local rc
+  local semver
+  rm -f "${statusfile}" "${errorfile}"
+  if [ -z "${FRAMEWORK_VERSION:-}" ]; then
+    echo "Unsupported Drobo firmware, please upgrade to the latest version." > "${statusfile}"
+    echo "4" > "${errorfile}"
+    return 1
+  fi
+  semver="$(/usr/bin/semver.sh "${framework_version}" "${FRAMEWORK_VERSION}")"
+  if [ "${semver}" == "1" ]; then
+    echo "Unsupported Drobo firmware, please upgrade to the latest version." > "${statusfile}"
+    echo "4" > "${errorfile}"
+    return 1
+  fi
+  return 0
+}
 
 start() {
+  _firmware_check
+  # ensure plugins are enabled
+  "${prog_dir}/bin/wp" plugin activate disable-canonical-redirects || true
+  "${prog_dir}/bin/wp" plugin activate relative-url || true
   cp -vf "${conffile}" "${apachefile}"
   "${daemon}" restart || true
   return 0
