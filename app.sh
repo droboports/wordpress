@@ -15,6 +15,18 @@ mkdir -p "${DEST}/app"
 cp -faR "target/${FOLDER}/"* "${DEST}/app/"
 }
 
+### CANONICAL REDIRECT PLUGIN ###
+_build_canonical_redirect() {
+local VERSION="1.0.11.0228"
+local FOLDER="disable-canonical-url-redirects"
+local FILE="${FOLDER}.zip"
+local URL="https://downloads.wordpress.org/plugin/${FILE}"
+
+_download_zip "${FILE}" "${URL}" "${FOLDER}"
+mkdir -p "src/dest/app/wp-content/plugins"
+cp -vfa "target/${FOLDER}/disable_canonical_url_redirects/"*.php "src/dest/app/wp-content/plugins/"
+}
+
 ### RELATIVE URL PLUGIN ###
 _build_relative_url() {
 local VERSION="0.0.12"
@@ -38,6 +50,7 @@ cp -vfa "download/${FILE}" "src/dest/bin/wp-cli.phar"
 }
 
 _build() {
+  _build_canonical_redirect
   _build_relative_url
   _build_wp_cli
   _build_wordpress
