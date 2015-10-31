@@ -44,7 +44,7 @@ _firmware_check() {
 start() {
   _firmware_check
   # ensure plugins are enabled
-  "${prog_dir}/bin/wp" plugin activate disable-canonical-redirects || true
+  "${prog_dir}/bin/wp" plugin activate disable-canonical-url-redirects || true
   "${prog_dir}/bin/wp" plugin activate relative-url || true
   cp -vf "${conffile}" "${apachefile}"
   "${daemon}" restart || true
