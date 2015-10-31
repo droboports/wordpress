@@ -16,17 +16,3 @@ set -o nounset  # exit on unset variable
 set -o xtrace   # enable script tracing
 
 /bin/sh "${prog_dir}/service.sh" stop
-
-# update wp-config.php
-if [ -f "${prog_dir}/app/wp-config.php" ] && ! grep -q "WP_SITEURL" "${prog_dir}/app/wp-config.php"; then
-cat >> "${prog_dir}/app/wp-config.php" << "EOF"
-if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1)
-    || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
-  $REQUEST_SITE_URL = 'https://'.$_SERVER['HTTP_HOST'];
-} else {
-  $REQUEST_SITE_URL = 'http://'.$_SERVER['HTTP_HOST'];
-}
-define( 'WP_SITEURL', $REQUEST_SITE_URL );
-define( 'WP_HOME', $REQUEST_SITE_URL );
-EOF
-fi
