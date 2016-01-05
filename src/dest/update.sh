@@ -16,3 +16,6 @@ set -o nounset  # exit on unset variable
 set -o xtrace   # enable script tracing
 
 /bin/sh "${prog_dir}/service.sh" stop || true
+
+/bin/rm -fR "${prog_dir}/app/wp-includes" "${prog_dir}/app/wp-admin"
+/bin/touch "${prog_dir}/.update"

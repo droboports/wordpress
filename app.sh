@@ -1,6 +1,6 @@
 ### WORDPRESS ###
 _build_wordpress() {
-local VERSION="4.3.1"
+local VERSION="4.4"
 local FOLDER="wordpress"
 local FILE="${FOLDER}-${VERSION}.tar.gz"
 local URL="https://wordpress.org/${FILE}"
@@ -29,7 +29,7 @@ cp -vfa "target/${FOLDER}/disable_canonical_url_redirects/"*.php "src/dest/app/w
 
 ### RELATIVE URL PLUGIN ###
 _build_relative_url() {
-local VERSION="0.0.12"
+local VERSION="0.0.13"
 local FOLDER="relative-url"
 local FILE="${FOLDER}.${VERSION}.zip"
 local URL="https://downloads.wordpress.org/plugin/${FILE}"

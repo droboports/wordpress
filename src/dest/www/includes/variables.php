@@ -1,7 +1,7 @@
 <?php 
 $app = "wordpress";
 $appname = "WordPress";
-$appversion = "4.3.1";
+$appversion = "4.4";
 $appsite = "https://wordpress.org/";
 $apphelp = "https://wordpress.org/support/";
 
