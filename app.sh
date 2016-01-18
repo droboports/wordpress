@@ -1,6 +1,6 @@
 ### WORDPRESS ###
 _build_wordpress() {
-local VERSION="4.4"
+local VERSION="4.4.1"
 local FOLDER="wordpress"
 local FILE="${FOLDER}-${VERSION}.tar.gz"
 local URL="https://wordpress.org/${FILE}"
@@ -16,6 +16,7 @@ cp -faR "target/${FOLDER}/"* "${DEST}/app/"
 }
 
 ### CANONICAL REDIRECT PLUGIN ###
+# https://wordpress.org/plugins/disable-canonical-url-redirects/
 _build_canonical_redirect() {
 local VERSION="1.0.11.0228"
 local FOLDER="disable-canonical-url-redirects"
@@ -28,6 +29,7 @@ cp -vfa "target/${FOLDER}/disable_canonical_url_redirects/"*.php "src/dest/app/w
 }
 
 ### RELATIVE URL PLUGIN ###
+# https://wordpress.org/plugins/relative-url/
 _build_relative_url() {
 local VERSION="0.0.13"
 local FOLDER="relative-url"
@@ -40,6 +42,7 @@ cp -vfa "target/${FOLDER}/"*.php "src/dest/app/wp-content/plugins/"
 }
 
 ### WP CLI ###
+# http://wp-cli.org/
 _build_wp_cli() {
 local FILE="wp-cli.phar"
 local URL="https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"

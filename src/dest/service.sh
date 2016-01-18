@@ -7,7 +7,7 @@
 
 framework_version="2.1"
 name="wordpress"
-version="4.4"
+version="4.4.1"
 description="WordPress is web software you can use to create a beautiful website or blog"
 depends="apache mysql"
 webui="WebUI"

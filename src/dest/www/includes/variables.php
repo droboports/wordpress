@@ -1,7 +1,7 @@
 <?php 
 $app = "wordpress";
 $appname = "WordPress";
-$appversion = "4.4";
+$appversion = "4.4.1";
 $appsite = "https://wordpress.org/";
 $apphelp = "https://wordpress.org/support/";
 
@@ -11,7 +11,7 @@ $applogs = array("/tmp/DroboApps/".$app."/log.txt",
                  "/tmp/DroboApps/".$app."/install.log",
                  "/tmp/DroboApps/".$app."/update.log");
 
-$appprotos = array("http");
+$appprotos = array("https");
 $appports = array("8030");
 $droboip = $_SERVER['SERVER_ADDR'];
 $apppage = $appprotos[0]."://".$droboip.":".$appports[0]."/";
